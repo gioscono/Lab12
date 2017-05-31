@@ -52,4 +52,19 @@ public class Model {
 		return flusso/misurazioni.size();
 	}
 
+	public String creaSimulazione(River selez, int k, float fMed) {
+	
+		float Q = k*fMed*30*3600*24;
+		float C = Q/2;
+		
+		Simulazione s = new Simulazione(Q, C, k, fMed);
+		for(Flow misurazione : this.getMisurazioniRiver(selez)){
+			s.addIngresso(misurazione);
+		}
+		
+		Statistiche stat = s.run();
+		String ris = "N. di giorni con uscita non garantita: "+stat.getErogazioneNonGarantita()+"\nLivello medio del fiume: "+stat.getcMed()+"\n";
+		return ris;
+	}
+
 }

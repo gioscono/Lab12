@@ -48,6 +48,11 @@ public class Flow {
 	public void setRiverId(int riverId) {
 		this.riverId = riverId;
 	}
+
+	@Override
+	public String toString() {
+		return this.flowId+"";
+	}
 	
 	
 	

@@ -77,6 +77,29 @@ public class RiversController {
     @FXML
     void doSimula(ActionEvent event) {
 
+    	River selez = boxRiver.getValue();
+    	float fMed= model.getFlussoMedio(selez);
+    	if(selez == null){
+    		txtResult.appendText("Seleziona un fiume.\n");
+    		return;
+    	}
+    	String k = txtK.getText();//Float.parseFloat(txtK.getText());
+    	int K = 0;
+    	if(!k.isEmpty()){
+    		try{
+    			K = Integer.parseInt(txtK.getText());
+    		}catch(Exception e){
+    			txtResult.appendText("Inserire un valore intero per k.\n");
+    		}
+    	}else{
+    		txtResult.appendText("Inserire un valore intero per k.\n");
+    	}
+    	
+    	txtResult.appendText(model.creaSimulazione(selez, K, fMed));
+    	
+    	
+    	
+    	
     }
 
     @FXML
